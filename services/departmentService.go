@@ -9,7 +9,7 @@ type DepartmentService interface {
 	FindAll() ([]models.DepartmentResponse, error)
 	FindByID(departmentID int) (models.DepartmentResponse, error)
 	Store(department models.DepartmentRequest) (models.DepartmentResponse, error)
-	Update(department models.DepartmentRequest) (models.DepartmentResponse, error)
+	Update(department models.DepartmentRequest, departmentID int) (models.DepartmentResponse, error)
 	Delete(departmentID int) (models.DepartmentResponse, error)
 }
 
@@ -77,15 +77,18 @@ func (s *departmentService) Store(departmentRequest models.DepartmentRequest) (m
 	return departmentResponse, err
 }
 
-func (s *departmentService) Update(departmentRequest models.DepartmentRequest) (models.DepartmentResponse, error) {
+func (s *departmentService) Update(departmentRequest models.DepartmentRequest, departmentID int) (models.DepartmentResponse, error) {
 	var departmentResponse models.DepartmentResponse
 
-	newDepartment := models.Department{
-		Name: departmentRequest.Name,
-		City: departmentRequest.City,
+	oldDepartment, err := s.departmentRepository.FindByID(departmentID)
+	if err != nil {
+		return departmentResponse, err
 	}
 
-	updatedDepartment, err := s.departmentRepository.Store(newDepartment)
+	oldDepartment.Name = departmentRequest.Name
+	oldDepartment.City = departmentRequest.City
+
+	updatedDepartment, err := s.departmentRepository.Update(oldDepartment)
 	if err != nil {
 		return departmentResponse, err
 	}
