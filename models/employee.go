@@ -11,7 +11,7 @@ type Employee struct {
 	Email        string    `json:"email" gorm:"type:varchar(50)"`
 	Address      string    `json:"address" gorm:"type:text"`
 	Picture      string    `json:"picture" gorm:"type:varchar(255)"`
-	DepartemenID int       `json:"departemen_id"`
+	DepartmentID int       `json:"department_id"`
 	CreatedAt    time.Time `json:"created_at"`
 	UpdatedAt    time.Time `json:"updated_at"`
 }
