@@ -1,12 +1,9 @@
 package main
 
-import (
-	"human-resource-api/config"
-	"human-resource-api/models"
-)
+import "human-resource-api/routes"
 
 func main() {
-	db := config.Connection()
+	router := routes.RouterSetup()
 
-	models.MigrateModels(db)
+	router.Run("8080")
 }
