@@ -45,7 +45,7 @@ func (r *departmentRepository) Store(department models.Department) (models.Depar
 }
 
 func (r *departmentRepository) Update(department models.Department, departmentID int) error {
-	err := r.db.Model(models.Department{}).Where("ID = ?", departmentID).Updates(&department).Error
+	err := r.db.Model(&models.Department{}).Where("ID = ?", departmentID).Updates(&department).Error
 
 	return err
 }
