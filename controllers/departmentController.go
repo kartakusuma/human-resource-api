@@ -17,6 +17,13 @@ func NewDepartmentController(departmentService services.DepartmentService) *depa
 	return &departmentController{departmentService}
 }
 
+// GetAllDepartments	godoc
+// @Summary	Get all departments
+// @Description Get all departments
+// @Produce application/json
+// @Tags department
+// @Success 200 {object} models.DepartmentResponse{}
+// @Router /departments [get]
 func (c *departmentController) GetAll(ctx *gin.Context) {
 	departments, err := c.departmentService.FindAll()
 	if err != nil {
@@ -31,6 +38,14 @@ func (c *departmentController) GetAll(ctx *gin.Context) {
 	})
 }
 
+// GetDepartmentByID	godoc
+// @Summary	Get a department
+// @Description Get a department by ID
+// @Param departmentID path int true "Get department by ID"
+// @Produce application/json
+// @Tags department
+// @Success 200 {object} models.DepartmentResponse{}
+// @Router /departments/{departmentID} [get]
 func (c *departmentController) GetByID(ctx *gin.Context) {
 	departmentID, err := strconv.Atoi(ctx.Param("id"))
 	if err != nil {
@@ -53,6 +68,14 @@ func (c *departmentController) GetByID(ctx *gin.Context) {
 	})
 }
 
+// StoreDepartment	godoc
+// @Summary	Store department
+// @Description Store a new department in database
+// @Param department body models.DepartmentRequest true "Store department"
+// @Produce application/json
+// @Tags department
+// @Success 200 {object} models.DepartmentResponse{}
+// @Router /departments [post]
 func (c *departmentController) Store(ctx *gin.Context) {
 	var departmentRequest models.DepartmentRequest
 
@@ -77,6 +100,15 @@ func (c *departmentController) Store(ctx *gin.Context) {
 	})
 }
 
+// UpdateDepartment	godoc
+// @Summary	Update department
+// @Description Update a department in database
+// @Param departmentID path int true "Update department by ID"
+// @Param department body models.DepartmentRequest true "Update department by ID"
+// @Produce application/json
+// @Tags department
+// @Success 200 {object} models.DepartmentResponse{}
+// @Router /departments/{departmentID} [put]
 func (c *departmentController) Update(ctx *gin.Context) {
 	var departmentRequest models.DepartmentRequest
 
@@ -109,6 +141,14 @@ func (c *departmentController) Update(ctx *gin.Context) {
 	})
 }
 
+// DestroyDepartment	godoc
+// @Summary	Destroy department
+// @Description Delete a department in database
+// @Param departmentID path int true "Delete department by ID"
+// @Produce application/json
+// @Tags department
+// @Success 200 {object} models.DepartmentResponse{}
+// @Router /departments/{departmentID} [delete]
 func (c departmentController) Destroy(ctx *gin.Context) {
 	departmentID, err := strconv.Atoi(ctx.Param("id"))
 	if err != nil {

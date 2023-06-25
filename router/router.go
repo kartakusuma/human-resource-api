@@ -1,4 +1,4 @@
-package routes
+package router
 
 import (
 	"human-resource-api/config"
@@ -8,6 +8,8 @@ import (
 	"human-resource-api/services"
 
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func RouterSetup() *gin.Engine {
@@ -15,6 +17,10 @@ func RouterSetup() *gin.Engine {
 	models.MigrateModels(db)
 
 	router := gin.Default()
+
+	// swagger
+	router.GET("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
 	apiRoute := router.Group("/api")
 	apiV1Route := apiRoute.Group("/v1")
 

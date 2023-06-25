@@ -17,6 +17,13 @@ func NewEmployeeController(employeeService services.EmployeeService) *employeeCo
 	return &employeeController{employeeService}
 }
 
+// GetAllEmployees	godoc
+// @Summary	Get all employees
+// @Description Get all employees
+// @Produce application/json
+// @Tags employee
+// @Success 200 {object} models.EmployeeResponse{}
+// @Router /employees [get]
 func (c *employeeController) GetAll(ctx *gin.Context) {
 	employees, err := c.employeeService.FindAll()
 	if err != nil {
@@ -31,6 +38,14 @@ func (c *employeeController) GetAll(ctx *gin.Context) {
 	})
 }
 
+// GetEmployeeByID	godoc
+// @Summary	Get an employee
+// @Description Get an employee by ID
+// @Param employeeID path int true "Get employee by ID"
+// @Produce application/json
+// @Tags employee
+// @Success 200 {object} models.EmployeeResponse{}
+// @Router /employees/{employeeID} [get]
 func (c *employeeController) GetByID(ctx *gin.Context) {
 	employeeID, err := strconv.Atoi(ctx.Param("id"))
 	if err != nil {
@@ -53,6 +68,14 @@ func (c *employeeController) GetByID(ctx *gin.Context) {
 	})
 }
 
+// StoreEmployee	godoc
+// @Summary	Store employee
+// @Description Store a new employee in database
+// @Param employee body models.EmployeeRequest true "Store employee"
+// @Produce application/json
+// @Tags employee
+// @Success 200 {object} models.EmployeeResponse{}
+// @Router /employees [post]
 func (c *employeeController) Store(ctx *gin.Context) {
 	var employeeRequest models.EmployeeRequest
 
@@ -77,6 +100,15 @@ func (c *employeeController) Store(ctx *gin.Context) {
 	})
 }
 
+// UpdateEmployee	godoc
+// @Summary	Update employee
+// @Description Update a employee in database
+// @Param employeeID path int true "Update employee by ID"
+// @Param employee body models.EmployeeRequest true "Update employee by ID"
+// @Produce application/json
+// @Tags employee
+// @Success 200 {object} models.EmployeeResponse{}
+// @Router /employees/{employeeID} [put]
 func (c *employeeController) Update(ctx *gin.Context) {
 	var employeeRequest models.EmployeeRequest
 
@@ -109,6 +141,14 @@ func (c *employeeController) Update(ctx *gin.Context) {
 	})
 }
 
+// DestroyEmployee	godoc
+// @Summary	Destroy employee
+// @Description Delete a employee in database
+// @Param employeeID path int true "Delete employee by ID"
+// @Produce application/json
+// @Tags employee
+// @Success 200 {object} models.EmployeeResponse{}
+// @Router /employees/{employeeID} [delete]
 func (c *employeeController) Destroy(ctx *gin.Context) {
 	employeeID, err := strconv.Atoi(ctx.Param("id"))
 	if err != nil {

@@ -1,0 +1,253 @@
+basePath: /api/v1
+definitions:
+  models.DepartmentRequest:
+    properties:
+      city:
+        type: string
+      name:
+        type: string
+    type: object
+  models.DepartmentResponse:
+    properties:
+      city:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  models.EmployeeRequest:
+    properties:
+      address:
+        type: string
+      age:
+        type: integer
+      department_id:
+        type: integer
+      email:
+        type: string
+      name:
+        type: string
+      phone:
+        type: integer
+      picture:
+        type: string
+      sex:
+        type: string
+    type: object
+  models.EmployeeResponse:
+    properties:
+      address:
+        type: string
+      age:
+        type: integer
+      department_id:
+        type: integer
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      phone:
+        type: integer
+      picture:
+        type: string
+      sex:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: A REST API for Human Resource Information System using Gin, GORM, and
+    MySQL
+  title: Human Resource API
+  version: "1.0"
+paths:
+  /departments:
+    get:
+      description: Get all departments
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.DepartmentResponse'
+      summary: Get all departments
+      tags:
+      - department
+    post:
+      description: Store a new department in database
+      parameters:
+      - description: Store department
+        in: body
+        name: department
+        required: true
+        schema:
+          $ref: '#/definitions/models.DepartmentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.DepartmentResponse'
+      summary: Store department
+      tags:
+      - department
+  /departments/{departmentID}:
+    delete:
+      description: Delete a department in database
+      parameters:
+      - description: Delete department by ID
+        in: path
+        name: departmentID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.DepartmentResponse'
+      summary: Destroy department
+      tags:
+      - department
+    get:
+      description: Get a department by ID
+      parameters:
+      - description: Get department by ID
+        in: path
+        name: departmentID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.DepartmentResponse'
+      summary: Get a department
+      tags:
+      - department
+    put:
+      description: Update a department in database
+      parameters:
+      - description: Update department by ID
+        in: path
+        name: departmentID
+        required: true
+        type: integer
+      - description: Update department by ID
+        in: body
+        name: department
+        required: true
+        schema:
+          $ref: '#/definitions/models.DepartmentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.DepartmentResponse'
+      summary: Update department
+      tags:
+      - department
+  /employees:
+    get:
+      description: Get all employees
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.EmployeeResponse'
+      summary: Get all employees
+      tags:
+      - employee
+    post:
+      description: Store a new employee in database
+      parameters:
+      - description: Store employee
+        in: body
+        name: employee
+        required: true
+        schema:
+          $ref: '#/definitions/models.EmployeeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.EmployeeResponse'
+      summary: Store employee
+      tags:
+      - employee
+  /employees/{employeeID}:
+    delete:
+      description: Delete a employee in database
+      parameters:
+      - description: Delete employee by ID
+        in: path
+        name: employeeID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.EmployeeResponse'
+      summary: Destroy employee
+      tags:
+      - employee
+    get:
+      description: Get an employee by ID
+      parameters:
+      - description: Get employee by ID
+        in: path
+        name: employeeID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.EmployeeResponse'
+      summary: Get an employee
+      tags:
+      - employee
+    put:
+      description: Update a employee in database
+      parameters:
+      - description: Update employee by ID
+        in: path
+        name: employeeID
+        required: true
+        type: integer
+      - description: Update employee by ID
+        in: body
+        name: employee
+        required: true
+        schema:
+          $ref: '#/definitions/models.EmployeeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.EmployeeResponse'
+      summary: Update employee
+      tags:
+      - employee
+swagger: "2.0"
