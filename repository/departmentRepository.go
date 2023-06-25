@@ -10,8 +10,8 @@ type DepartmentRepository interface {
 	FindAll() ([]models.Department, error)
 	FindByID(departmentID int) (models.Department, error)
 	Store(department models.Department) (models.Department, error)
-	Update(department models.Department) (models.Department, error)
-	Delete(department models.Department) (models.Department, error)
+	Update(department models.Department, departmentID int) error
+	Delete(departmentID int) error
 }
 
 type departmentRepository struct {
@@ -33,7 +33,7 @@ func (r *departmentRepository) FindAll() ([]models.Department, error) {
 func (r *departmentRepository) FindByID(departmentID int) (models.Department, error) {
 	var department models.Department
 
-	err := r.db.Find(&department).Error
+	err := r.db.First(&department, departmentID).Error
 
 	return department, err
 }
@@ -44,14 +44,14 @@ func (r *departmentRepository) Store(department models.Department) (models.Depar
 	return department, err
 }
 
-func (r *departmentRepository) Update(department models.Department) (models.Department, error) {
-	err := r.db.Save(&department).Error
+func (r *departmentRepository) Update(department models.Department, departmentID int) error {
+	err := r.db.Model(models.Department{}).Where("ID = ?", departmentID).Updates(&department).Error
 
-	return department, err
+	return err
 }
 
-func (r *departmentRepository) Delete(department models.Department) (models.Department, error) {
-	err := r.db.Delete(&department).Error
+func (r *departmentRepository) Delete(departmentID int) error {
+	err := r.db.Delete(&models.Department{}, departmentID).Error
 
-	return department, err
+	return err
 }
