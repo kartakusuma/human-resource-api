@@ -71,7 +71,7 @@ func (s *departmentService) Store(departmentRequest models.DepartmentRequest) (m
 	}
 
 	departmentResponse.ID = storedDepartment.ID
-	departmentResponse.Name = storedDepartment.City
+	departmentResponse.Name = storedDepartment.Name
 	departmentResponse.City = storedDepartment.City
 
 	return departmentResponse, err
@@ -80,22 +80,22 @@ func (s *departmentService) Store(departmentRequest models.DepartmentRequest) (m
 func (s *departmentService) Update(departmentRequest models.DepartmentRequest, departmentID int) (models.DepartmentResponse, error) {
 	var departmentResponse models.DepartmentResponse
 
-	oldDepartment, err := s.departmentRepository.FindByID(departmentID)
+	updateDepartment, err := s.departmentRepository.FindByID(departmentID)
 	if err != nil {
 		return departmentResponse, err
 	}
 
-	oldDepartment.Name = departmentRequest.Name
-	oldDepartment.City = departmentRequest.City
+	updateDepartment.Name = departmentRequest.Name
+	updateDepartment.City = departmentRequest.City
 
-	updatedDepartment, err := s.departmentRepository.Update(oldDepartment)
+	err = s.departmentRepository.Update(updateDepartment, departmentID)
 	if err != nil {
 		return departmentResponse, err
 	}
 
-	departmentResponse.ID = updatedDepartment.ID
-	departmentResponse.Name = updatedDepartment.Name
-	departmentResponse.City = updatedDepartment.City
+	departmentResponse.ID = updateDepartment.ID
+	departmentResponse.Name = updateDepartment.Name
+	departmentResponse.City = updateDepartment.City
 
 	return departmentResponse, err
 }
@@ -103,19 +103,19 @@ func (s *departmentService) Update(departmentRequest models.DepartmentRequest, d
 func (s *departmentService) Delete(departmentID int) (models.DepartmentResponse, error) {
 	var departmentResponse models.DepartmentResponse
 
-	department, err := s.departmentRepository.FindByID(departmentID)
+	deleteDepartment, err := s.departmentRepository.FindByID(departmentID)
 	if err != nil {
 		return departmentResponse, err
 	}
 
-	deletedDepartment, err := s.departmentRepository.Delete(department)
+	err = s.departmentRepository.Delete(departmentID)
 	if err != nil {
 		return departmentResponse, err
 	}
 
-	departmentResponse.ID = deletedDepartment.ID
-	departmentResponse.Name = deletedDepartment.Name
-	departmentResponse.City = deletedDepartment.City
+	departmentResponse.ID = deleteDepartment.ID
+	departmentResponse.Name = deleteDepartment.Name
+	departmentResponse.City = deleteDepartment.City
 
 	return departmentResponse, err
 }
