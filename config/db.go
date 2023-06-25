@@ -7,8 +7,6 @@ import (
 	"gorm.io/gorm"
 )
 
-var db *gorm.DB
-
 func Connection() *gorm.DB {
 	dsn := "root:@tcp(127.0.0.1:3306)/human-resource?charset=utf8mb4&parseTime=True&loc=Local"
 
