@@ -41,7 +41,7 @@ func (c *employeeController) GetAll(ctx *gin.Context) {
 // GetEmployeeByID	godoc
 // @Summary	Get an employee
 // @Description Get an employee by ID
-// @Param employeeID path int true "Get employee by ID"
+// @Param employeeID path int true "Get an employee by ID"
 // @Produce application/json
 // @Tags employee
 // @Success 200 {object} models.EmployeeResponse{}
@@ -69,9 +69,9 @@ func (c *employeeController) GetByID(ctx *gin.Context) {
 }
 
 // StoreEmployee	godoc
-// @Summary	Store employee
+// @Summary	Store an employee
 // @Description Store a new employee in database
-// @Param employee body models.EmployeeRequest true "Store employee"
+// @Param employee body models.EmployeeRequest true "Store an employee"
 // @Produce application/json
 // @Tags employee
 // @Success 200 {object} models.EmployeeResponse{}
@@ -101,10 +101,10 @@ func (c *employeeController) Store(ctx *gin.Context) {
 }
 
 // UpdateEmployee	godoc
-// @Summary	Update employee
-// @Description Update a employee in database
-// @Param employeeID path int true "Update employee by ID"
-// @Param employee body models.EmployeeRequest true "Update employee by ID"
+// @Summary	Update an employee
+// @Description Update an employee in database
+// @Param employeeID path int true "Update an employee by ID"
+// @Param employee body models.EmployeeRequest true "Update an employee by ID"
 // @Produce application/json
 // @Tags employee
 // @Success 200 {object} models.EmployeeResponse{}
@@ -142,9 +142,9 @@ func (c *employeeController) Update(ctx *gin.Context) {
 }
 
 // DestroyEmployee	godoc
-// @Summary	Destroy employee
+// @Summary	Destroy an employee
 // @Description Delete a employee in database
-// @Param employeeID path int true "Delete employee by ID"
+// @Param employeeID path int true "Delete an employee by ID"
 // @Produce application/json
 // @Tags employee
 // @Success 200 {object} models.EmployeeResponse{}
