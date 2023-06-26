@@ -43,10 +43,10 @@ const docTemplate = `{
                 "tags": [
                     "department"
                 ],
-                "summary": "Store department",
+                "summary": "Store a department",
                 "parameters": [
                     {
-                        "description": "Store department",
+                        "description": "Store a department",
                         "name": "department",
                         "in": "body",
                         "required": true,
@@ -78,7 +78,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Get department by ID",
+                        "description": "Get a department by ID",
                         "name": "departmentID",
                         "in": "path",
                         "required": true
@@ -101,17 +101,17 @@ const docTemplate = `{
                 "tags": [
                     "department"
                 ],
-                "summary": "Update department",
+                "summary": "Update a department",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Update department by ID",
+                        "description": "Update a department by ID",
                         "name": "departmentID",
                         "in": "path",
                         "required": true
                     },
                     {
-                        "description": "Update department by ID",
+                        "description": "Update a department by ID",
                         "name": "department",
                         "in": "body",
                         "required": true,
@@ -137,11 +137,11 @@ const docTemplate = `{
                 "tags": [
                     "department"
                 ],
-                "summary": "Destroy department",
+                "summary": "Destroy a department",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Delete department by ID",
+                        "description": "Delete a department by ID",
                         "name": "departmentID",
                         "in": "path",
                         "required": true
@@ -184,10 +184,10 @@ const docTemplate = `{
                 "tags": [
                     "employee"
                 ],
-                "summary": "Store employee",
+                "summary": "Store an employee",
                 "parameters": [
                     {
-                        "description": "Store employee",
+                        "description": "Store an employee",
                         "name": "employee",
                         "in": "body",
                         "required": true,
@@ -219,7 +219,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Get employee by ID",
+                        "description": "Get an employee by ID",
                         "name": "employeeID",
                         "in": "path",
                         "required": true
@@ -235,24 +235,24 @@ const docTemplate = `{
                 }
             },
             "put": {
-                "description": "Update a employee in database",
+                "description": "Update an employee in database",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "employee"
                 ],
-                "summary": "Update employee",
+                "summary": "Update an employee",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Update employee by ID",
+                        "description": "Update an employee by ID",
                         "name": "employeeID",
                         "in": "path",
                         "required": true
                     },
                     {
-                        "description": "Update employee by ID",
+                        "description": "Update an employee by ID",
                         "name": "employee",
                         "in": "body",
                         "required": true,
@@ -278,11 +278,11 @@ const docTemplate = `{
                 "tags": [
                     "employee"
                 ],
-                "summary": "Destroy employee",
+                "summary": "Destroy an employee",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Delete employee by ID",
+                        "description": "Delete an employee by ID",
                         "name": "employeeID",
                         "in": "path",
                         "required": true

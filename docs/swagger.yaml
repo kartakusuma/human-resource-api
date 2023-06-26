@@ -80,7 +80,7 @@ paths:
     post:
       description: Store a new department in database
       parameters:
-      - description: Store department
+      - description: Store a department
         in: body
         name: department
         required: true
@@ -93,14 +93,14 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/models.DepartmentResponse'
-      summary: Store department
+      summary: Store a department
       tags:
       - department
   /departments/{departmentID}:
     delete:
       description: Delete a department in database
       parameters:
-      - description: Delete department by ID
+      - description: Delete a department by ID
         in: path
         name: departmentID
         required: true
@@ -112,13 +112,13 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/models.DepartmentResponse'
-      summary: Destroy department
+      summary: Destroy a department
       tags:
       - department
     get:
       description: Get a department by ID
       parameters:
-      - description: Get department by ID
+      - description: Get a department by ID
         in: path
         name: departmentID
         required: true
@@ -136,12 +136,12 @@ paths:
     put:
       description: Update a department in database
       parameters:
-      - description: Update department by ID
+      - description: Update a department by ID
         in: path
         name: departmentID
         required: true
         type: integer
-      - description: Update department by ID
+      - description: Update a department by ID
         in: body
         name: department
         required: true
@@ -154,7 +154,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/models.DepartmentResponse'
-      summary: Update department
+      summary: Update a department
       tags:
       - department
   /employees:
@@ -173,7 +173,7 @@ paths:
     post:
       description: Store a new employee in database
       parameters:
-      - description: Store employee
+      - description: Store an employee
         in: body
         name: employee
         required: true
@@ -186,14 +186,14 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/models.EmployeeResponse'
-      summary: Store employee
+      summary: Store an employee
       tags:
       - employee
   /employees/{employeeID}:
     delete:
       description: Delete a employee in database
       parameters:
-      - description: Delete employee by ID
+      - description: Delete an employee by ID
         in: path
         name: employeeID
         required: true
@@ -205,13 +205,13 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/models.EmployeeResponse'
-      summary: Destroy employee
+      summary: Destroy an employee
       tags:
       - employee
     get:
       description: Get an employee by ID
       parameters:
-      - description: Get employee by ID
+      - description: Get an employee by ID
         in: path
         name: employeeID
         required: true
@@ -227,14 +227,14 @@ paths:
       tags:
       - employee
     put:
-      description: Update a employee in database
+      description: Update an employee in database
       parameters:
-      - description: Update employee by ID
+      - description: Update an employee by ID
         in: path
         name: employeeID
         required: true
         type: integer
-      - description: Update employee by ID
+      - description: Update an employee by ID
         in: body
         name: employee
         required: true
@@ -247,7 +247,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/models.EmployeeResponse'
-      summary: Update employee
+      summary: Update an employee
       tags:
       - employee
 swagger: "2.0"
